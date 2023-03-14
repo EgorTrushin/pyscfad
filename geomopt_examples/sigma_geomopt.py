@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import jax
+import jax; jax.config.update('jax_platform_name', 'cpu')
 import time
 from pyscf import df as pyscf_df
 from pyscfad import gto, dft, scf, df
@@ -44,30 +44,32 @@ def get_geom(geom_str):
 
 ts = time.time()
 
+ts = time.time()
+
 GEOM = '''H 0 0 0; H 0 0 1.'''
-BASIS = "augccpvdz"
-print("GEOM:", GEOM)
-print("BASIS:", BASIS)
+BASIS = 'augccpvdz'
+VERBOSE = False
+
+print('\nSTARTING GEOMETRY:', GEOM)
+print('\nBASIS:', BASIS)
+
 optimizer = Berny(get_geom(GEOM))
 
 val_and_grad = jax.value_and_grad(energy, (0,1))
 
-print("Elapsed time:", time.time()-ts, flush=True)
+print('\nTime before optimization:', time.time()-ts, flush=True)
 
+print('')
 for iter_, geom in enumerate(optimizer):
-     print("\n"+30*"*")
-     print("OPTIMIZER STEP:", iter_+1)
-     print(30*"*")
-     print("Geometry:")
-     print(geom.coords, flush=True)
      energy, gradients = solver(list(geom), val_and_grad, basis=BASIS)
-     print("Energy:", energy)
-     print("Gradients:")
-     print(gradients)
      optimizer.send((energy, gradients))
-     print("Elapsed time:", time.time()-ts, flush=True)
-relaxed = geom
+     print(f'iter={iter_+1}   energy={energy:.10f}   elapsed time={time.time()-ts:.2f} seconds', flush=True)
+     if VERBOSE:
+         print('\nGeometry:')
+         print(geom.coords, flush=True)
+         print('\nGradients:')
+         print(gradients)
+         print('')
 
-print("Relaxed Geometry:")
-print(relaxed.coords)
-print("Elapsed time:", time.time()-ts)
+print('\nOptimized feometry:')
+print(geom.coords)
