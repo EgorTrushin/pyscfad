@@ -16,11 +16,11 @@ def energy_(mol, with_df, method, nw, x0):
     mf.kernel(dm0=None)
 
     if method == 'RPA':
-       mymp = rpa.RPA(mf, nw=nw, x0=x0)
+       mymp = rpa.RPA(mf)
     elif method == 'SIGMA':
-       mymp = sigma.SIGMA(mf, nw=nw, x0=x0)
+       mymp = sigma.SIGMA(mf)
     mymp.with_df = with_df
-    mymp.kernel()
+    mymp.kernel(nw=nw, x0=x0)
     return mymp.e_tot
 
 def solver(geom, val_and_grad, basis, method, nw, x0):
