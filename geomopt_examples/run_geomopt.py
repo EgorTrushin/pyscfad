@@ -16,9 +16,9 @@ def energy_(mol, with_df, method, nw, x0):
     mf.kernel(dm0=None)
 
     if method == 'RPA':
-       mymp = rpa.RPA(mf, nw=40, x0=0.5)
+       mymp = rpa.RPA(mf, nw=nw, x0=x0)
     elif method == 'SIGMA':
-       mymp = sigma.SIGMA(mf)
+       mymp = sigma.SIGMA(mf, nw=nw, x0=x0)
     mymp.with_df = with_df
     mymp.kernel()
     return mymp.e_tot
