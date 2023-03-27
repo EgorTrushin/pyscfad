@@ -9,7 +9,7 @@ from pyscfad.lib import numpy as np
 from pyscfad import scf, dft, df
 
 
-def kernel(rpa, mo_energy, mo_coeff, Lpq=None, nw=None, verbose=logger.NOTE):
+def kernel(rpa, mo_energy, mo_coeff, Lpq=None, nw=None, x0=None, verbose=logger.NOTE):
     mf = rpa._scf
     # only support frozen core
     if rpa.frozen is not None:
@@ -20,7 +20,7 @@ def kernel(rpa, mo_energy, mo_coeff, Lpq=None, nw=None, verbose=logger.NOTE):
         Lpq = rpa.ao2mo(mo_coeff)
 
     # Grids for integration on imaginary axis
-    freqs, wts = pyscf_rpa._get_scaled_legendre_roots(nw)
+    freqs, wts = pyscf_rpa._get_scaled_legendre_roots(nw, x0)
 
     # Compute HF exchange energy (EXX)
     dm = mf.make_rdm1()
@@ -116,7 +116,7 @@ class RPA(pyscf_rpa.RPA):
                 auxmol = df.addons.make_auxmol(self.mol, auxbasis)
                 self.with_df = df.DF(self.mol, auxmol=auxmol)
 
-    def kernel(self, mo_energy=None, mo_coeff=None, Lpq=None, nw=40):
+    def kernel(self, mo_energy=None, mo_coeff=None, Lpq=None, nw=40, x0=0.5):
         '''
         Args:
             mo_energy : 1D array (nmo), mean-field mo energy
@@ -136,7 +136,7 @@ class RPA(pyscf_rpa.RPA):
         log = logger.new_logger(self)
         self.dump_flags()
         self.e_tot, self.e_hf, self.e_corr = \
-                        kernel(self, mo_energy, mo_coeff, Lpq=Lpq, nw=nw, verbose=self.verbose)
+                        kernel(self, mo_energy, mo_coeff, Lpq=Lpq, nw=nw, x0=x0, verbose=self.verbose)
 
         log.timer('RPA')
         del log

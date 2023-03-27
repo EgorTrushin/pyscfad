@@ -12,7 +12,7 @@ from pyscf.gw.sigma_utils import get_spline_coeffs
 
 #from numpy import linalg
 
-def kernel(rpa, mo_energy, mo_coeff, Lpq=None, nw=None, verbose=logger.NOTE):
+def kernel(rpa, mo_energy, mo_coeff, Lpq=None, nw=None, x0=None, verbose=logger.NOTE):
     mf = rpa._scf
     # only support frozen core
     if rpa.frozen is not None:
@@ -23,7 +23,7 @@ def kernel(rpa, mo_energy, mo_coeff, Lpq=None, nw=None, verbose=logger.NOTE):
         Lpq = rpa.ao2mo(mo_coeff)
 
     # Grids for integration on imaginary axis
-    freqs, wts = pyscf_sigma._get_scaled_legendre_roots(nw, 0.5)
+    freqs, wts = pyscf_sigma._get_scaled_legendre_roots(nw, x0)
 
     # Compute HF exchange energy (EXX)
     dm = mf.make_rdm1()
@@ -77,28 +77,8 @@ def get_rpa_ecorr(rpa, Lpq, freqs, wts):
     if (mo_energy[nocc] - mo_energy[nocc-1]) < 1e-3:
         logger.warn(rpa, 'Current RPA code not well-defined for degeneracy!')
 
-    def body(omega, weight, x, c):
-        Pi = get_rho_response(omega, mo_energy, Lpq[:, :nocc, nocc:])
-        sigmas, _ = jax.numpy.linalg.eigh(-Pi)
-        ec_w_rpa = 0.
-        e_corr_i = 0.
-        #ec_w_sigma = 0.
-        for sigma in sigmas:
-            #if sigma > 0.:
-            ec_w_rpa += np.log(1.+sigma) - sigma - cspline_integr(c, x, sigma)
-                #ec_w_sigma += - cspline_integr(c, x, sigma)
-            #else:
-            #    assert abs(sigma) < 1.0e-14
-        e_corr_i += 1./(2.*np.pi) * ec_w_rpa * weight
-#        ec_w  = np.log(np.linalg.det(np.eye(naux) - Pi))
-#        ec_w += np.trace(Pi)
-#        e_corr_i = 1./(2.*numpy.pi) * ec_w * weight
-        return e_corr_i
-
     x, c = get_spline_coeffs(logger, rpa)
     x, c = jax.numpy.array(x), jax.numpy.array(c)
-    #e_corr_i = vmap(body, in_axes=(0, 0, None, None))(freqs, wts, x, c)
-    #e_corr = np.sum(e_corr_i)
 
     e_corr_rpa = 0.
     e_corr_sigma = 0.
@@ -115,7 +95,7 @@ def get_rpa_ecorr(rpa, Lpq, freqs, wts):
                 assert abs(sigma) < 1.0e-14
         e_corr_rpa += 1./(2.*np.pi) * ec_w_rpa * wts[w]
         e_corr_sigma += 1./(2.*np.pi) * ec_w_sigma * wts[w]
-    return e_corr_sigma
+    return e_corr_sigma+e_corr_rpa
 
 @util.pytree_node(['_scf','mol','with_df','mo_energy','mo_coeff'], num_args=1)
 class SIGMA(pyscf_sigma.SIGMA):
@@ -150,7 +130,7 @@ class SIGMA(pyscf_sigma.SIGMA):
                 auxmol = df.addons.make_auxmol(self.mol, auxbasis)
                 self.with_df = df.DF(self.mol, auxmol=auxmol)
 
-    def kernel(self, mo_energy=None, mo_coeff=None, Lpq=None, nw=40):
+    def kernel(self, mo_energy=None, mo_coeff=None, Lpq=None, nw=40, x0=0.5):
         """
         Args:
             mo_energy : 1D array (nmo), mean-field mo energy
@@ -170,7 +150,7 @@ class SIGMA(pyscf_sigma.SIGMA):
         log = logger.new_logger(self)
         self.dump_flags()
         self.e_tot, self.e_hf, self.e_corr = \
-                        kernel(self, mo_energy, mo_coeff, Lpq=Lpq, nw=nw, verbose=self.verbose)
+                        kernel(self, mo_energy, mo_coeff, Lpq=Lpq, nw=nw, x0=x0, verbose=self.verbose)
 
         log.timer('RPA')
         del log
@@ -190,34 +170,25 @@ class SIGMA(pyscf_sigma.SIGMA):
         else:
             raise RuntimeError("not enough memory")
 
+@jit
+def lin_term(c,s):
+    return 0.5*c[1][0]*s
 
-def intervalnum(x, s):
-    """Determine to which interval s belongs in x.
+@jit
+def term_1(x,c,s,m):
+    h = s-x[m-1]
+    return 0.5*c[1][0]*x[1]**2/s + (c[0][m-1]*h + c[1][m-1]/2.*h**2 + c[2][m-1]/3.*h**3 + c[3][m-1]/4.*h**4)/s
 
-    Args:
-        x: List of non-negative real numbers in increasing order.
-        s: Positive real number.
+@jit
+def last_term(c, x, s):
+    return c[0][-1]*(1.-x[-1]/s)
 
-    Returns:
-        inum: The number of interval.
-    """
-
-    #assert s > 0.  # verify that s is positive
-    #assert all(i > -1e-24 for i in x)  # verify that all x-values are positive
-    #assert x == sorted(x)  # verify that x-values are in increasing order
-
-    # find interval
-    inum = -1
-    if s > x[-1]:
-        inum = len(x)
-    for i in range(0, len(x)-1):
-        if (s > x[i] and (s <= x[i+1])):
-            inum = i+1
-
-    assert inum != -1  # verify that an interval was determined
-
-    return inum
-
+@jit
+def sum_1(x,c,s,i):
+    integral = 0.
+    h = x[i]-x[i-1]
+    integral += (c[0][i-1]*h + c[1][i-1]/2.*h**2 + c[2][i-1]/3.*h**3 + c[3][i-1]/4.*h**4)/s
+    return integral
 
 def cspline_integr(c, x, s):
     """Integrate analytically cubic spline representation of sigma-functional
@@ -234,23 +205,20 @@ def cspline_integr(c, x, s):
     Returns:
         integral: resulting integral
     """
-    m = intervalnum(x, s)  # determine to which interval s belongs
+    m = np.searchsorted(x, s)  # determine to which interval s belongs
 
     # evaluate integral
     integral = 0.
     if m == 1:
-        integral = 0.5*c[1][0]*s
+        integral = lin_term(c,s)
     if m > 1 and m < len(x):
-        h = s-x[m-1]
-        integral = 0.5*c[1][0]*x[1]**2/s + (c[0][m-1]*h + c[1][m-1]/2.*h**2 + c[2][m-1]/3.*h**3 + c[3][m-1]/4.*h**4)/s
+        integral = term_1(x,c,s,m)
         for i in range(2, m):
-            h = x[i]-x[i-1]
-            integral += (c[0][i-1]*h + c[1][i-1]/2.*h**2 + c[2][i-1]/3.*h**3 + c[3][i-1]/4.*h**4)/s
+            integral += sum_1(x,c,s,i)
     if m == len(x):
         integral = 0.5*c[1][0]*x[1]**2/s
         for i in range(2, m):
-            h = x[i]-x[i-1]
-            integral += (c[0][i-1]*h + c[1][i-1]/2.*h**2 + c[2][i-1]/3.*h**3 + c[3][i-1]/4.*h**4)/s
-        integral += c[0][-1]*(1.-x[-1]/s)
+            integral += sum_1(x,c,s,i)
+        integral += last_term(c, x, s)
 
     return integral*s
