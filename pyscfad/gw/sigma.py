@@ -58,25 +58,28 @@ def get_rpa_ecorr(rpa, Lpq, freqs, wts):
     if (mo_energy[nocc] - mo_energy[nocc-1]) < 1e-3:
         logger.warn(rpa, 'Current RPA code not well-defined for degeneracy!')
 
+    def body(omega, weight, x, c):
+        Pi = get_rho_response(omega, mo_energy, Lpq[:, :nocc, nocc:])
+        sigmas, _ = jax.numpy.linalg.eigh(-Pi)
+        ec_w = 0.
+        e_corr_i = 0.
+        ec_w_sigma = 0.
+        for sigma in sigmas:
+            #if sigma > 0.:
+            ec_w += np.log(1.+sigma) - sigma - cspline_integr(c, x, sigma)
+            #ec_w_sigma += - cspline_integr(c, x, sigma)
+            #else:
+            #    assert abs(sigma) < 1.0e-14
+        e_corr_i += 1./(2.*np.pi) * ec_w * weight
+        return e_corr_i
+
     x, c = get_spline_coeffs(logger, rpa)
     x, c = jax.numpy.array(x), jax.numpy.array(c)
 
-    e_corr_rpa = 0.
-    e_corr_sigma = 0.
-    for w in range(len(freqs)):
-        Pi = get_rho_response(freqs[w], mo_energy, Lpq[:, :nocc, nocc:])
-        sigmas, _ = jax.numpy.linalg.eigh(-Pi)
-        ec_w_rpa = 0.
-        ec_w_sigma = 0.
-        for sigma in sigmas:
-            if sigma > 0.:
-                ec_w_rpa += np.log(1.+sigma) - sigma
-                ec_w_sigma += - cspline_integr(c, x, sigma)
-            else:
-                assert abs(sigma) < 1.0e-14
-        e_corr_rpa += 1./(2.*np.pi) * ec_w_rpa * wts[w]
-        e_corr_sigma += 1./(2.*np.pi) * ec_w_sigma * wts[w]
-    return e_corr_sigma+e_corr_rpa
+    e_corr_i = vmap(body, in_axes=(0, 0, None, None))(freqs, wts, x, c) # these lines
+    e_corr = np.sum(e_corr_i)
+    return e_corr
+
 
 @util.pytree_node(['_scf','mol','with_df','mo_energy','mo_coeff'], num_args=1)
 class SIGMA(RPA):
@@ -106,58 +109,38 @@ class SIGMA(RPA):
 
         return self.e_corr
 
-@jit
-def lin_term(c,s):
-    return 0.5*c[1][0]*s
+
+def rectangle_2(x,k,a,b):
+    # makes a rectagle of height 1 form a to b
+    # a muss immer links sein von b
+    return ((np.arctan(k*(x-b)))/(np.pi)-0.5)*(np.arctan(-k*(x-a))/np.pi-0.5)
+
+def rectangle(x,k,a,b):
+    # makes a rectagle of height 1 form a to b
+    # a muss immer links sein von b
+    return (np.sign(x-a)+1.0)/2.0*(np.sign(-1.0*(x-b))+1.0)/2.0
 
 @jit
-def term_1(x,c,s,m):
-    h = s-x[m-1]
-    return 0.5*c[1][0]*x[1]**2/s + (c[0][m-1]*h + c[1][m-1]/2.*h**2 + c[2][m-1]/3.*h**3 + c[3][m-1]/4.*h**4)/s
-
-@jit
-def last_term(c, x, s):
-    return c[0][-1]*(1.-x[-1]/s)
-
-@jit
-def sum_1(x,c,s,i):
-    integral = 0.
-    h = x[i]-x[i-1]
-    integral += (c[0][i-1]*h + c[1][i-1]/2.*h**2 + c[2][i-1]/3.*h**3 + c[3][i-1]/4.*h**4)/s
+def cspline_integr(c,x,s):
+    k=1e14
+    integral = 0.5*c[1][0]*s*rectangle(s,k,0,x[1])
+    for m in range(1,len(x)):
+        offset=0.0
+        h = s-x[m-1]
+        offset += 0.5*c[1][0]*x[1]**2 + h*(c[0][m-1] + h*(c[1][m-1]/2. + h*(c[2][m-1]/3. + h*(c[3][m-1]/4.))))
+        for i in range(2, m):
+            h = x[i]-x[i-1]
+            offset += h*(c[0][i-1] + h*(c[1][i-1]/2. + h*(c[2][i-1]/3. + h*(c[3][i-1]/4.)))) #*rectangle(s,k,x[m-1],x[m])
+        integral += offset*rectangle(s,k,x[m-1],x[m]) # with this line you need the rectangle only once
+            #print(i,(c[0][i-1]*h + c[1][i-1]/2.*h**2 + c[2][i-1]/3.*h**3 + c[3][i-1]/4.*h**4)/s )
+    integral += 0.5*c[1][0]*x[1]**2*rectangle(s,k,x[-1],1e14)
+    offset=0.0
+    for i in range(2, len(x)):
+        h = x[i]-x[i-1]
+        offset += h*(c[0][i-1] + h*(c[1][i-1]/2. + h*(c[2][i-1]/3. + h*(c[3][i-1]/4.*h**4))))
+    integral += (offset+c[0][-1]*(1.-x[-1]/s))*rectangle(s,k,x[-1],1e14)
     return integral
 
-def cspline_integr(c, x, s):
-    """Integrate analytically cubic spline representation of sigma-functional
-       'correction' from 0 to s.
-
-    First interval of spline is treated as linear.
-    Last interval of spline is treated as a constant.
-
-    Args:
-        c: Coefficients of spline
-        x: Ordinates of spline. Have to be non-negative and increasingly order
-        s: Sigma-value for which one integrate. Has to be positive.
-
-    Returns:
-        integral: resulting integral
-    """
-    m = np.searchsorted(x, s)  # determine to which interval s belongs
-
-    # evaluate integral
-    integral = 0.
-    if m == 1:
-        integral = lin_term(c,s)
-    if m > 1 and m < len(x):
-        integral = term_1(x,c,s,m)
-        for i in range(2, m):
-            integral += sum_1(x,c,s,i)
-    if m == len(x):
-        integral = 0.5*c[1][0]*x[1]**2/s
-        for i in range(2, m):
-            integral += sum_1(x,c,s,i)
-        integral += last_term(c, x, s)
-
-    return integral*s
 
 def get_spline_coeffs(logger, rpa):
     assert rpa._scf.xc in ["pbe", "pbe0", "b3lyp", "tpss"]
