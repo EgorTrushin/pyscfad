@@ -63,10 +63,11 @@ def get_rpa_ecorr(rpa, Lpq, freqs, wts):
         sigmas, _ = jax.numpy.linalg.eigh(-Pi)
         ec_w = 0.
         for s in sigmas:
-            ec_w += jax.lax.cond(s > 0,
-                                 lambda s, x, c: np.log(1.+s) - s - cspline_integr(c, x, s),
-                                 lambda s, x, c: 0.0,
-                                 s, x, c)
+            #ec_w += jax.lax.cond(s > 0,
+            #                     lambda s, x, c: np.log(1.+s) - s - cspline_integr(c, x, s),
+            #                     lambda s, x, c: 0.0,
+            #                     s, x, c)
+            ec_w += np.log(1.+s) - s - cspline_integr(c, x, s)
         e_corr_i = 1./(2.*np.pi) * ec_w * weight
         return e_corr_i
 
