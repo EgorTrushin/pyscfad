@@ -68,11 +68,15 @@ pyscfad.scf.uhf.UHF
            ~UHF.get_fock
          
          
+           ~UHF.get_grad
          
          
          
          
          
+         
+         
+           ~UHF.get_occ
          
          
          
@@ -110,6 +114,7 @@ pyscfad.scf.uhf.UHF
          
          
            ~UHF.spin_square
+         
          
          
          

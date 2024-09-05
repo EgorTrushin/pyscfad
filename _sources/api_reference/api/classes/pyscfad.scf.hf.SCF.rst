@@ -75,6 +75,8 @@ pyscfad.scf.hf.SCF
          
          
          
+           ~SCF.get_occ
+         
          
          
            ~SCF.get_veff
@@ -106,12 +108,17 @@ pyscfad.scf.hf.SCF
          
          
          
+           ~SCF.scf
          
          
          
          
          
          
+         
+         
+         
+           ~SCF.to_pyscf
          
          
          

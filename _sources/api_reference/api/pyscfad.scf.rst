@@ -40,25 +40,25 @@ pyscfad.scf
    :recursive:
 
    
-   pyscfad.scf.addons
+   addons
    
    
-   pyscfad.scf.chkfile
+   chkfile
    
    
-   pyscfad.scf.cphf
+   cphf
    
    
-   pyscfad.scf.diis
+   diis
    
    
-   pyscfad.scf.hf
+   hf
    
    
-   pyscfad.scf.rohf
+   rohf
    
    
    
-   pyscfad.scf.uhf
+   uhf
    
 

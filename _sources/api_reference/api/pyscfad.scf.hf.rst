@@ -29,10 +29,7 @@ pyscfad.scf.hf
       :toctree: functions/
 
    
-      damping
       dot_eri_dm
-      get_fock
-      kernel
 
    
    

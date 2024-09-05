@@ -25,6 +25,17 @@ pyscfad.scf.diis
 
    
    
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree: functions/
+
+   
+      get_err_vec
+      get_err_vec_orig
+      get_err_vec_orth
+
+   
    
 
 

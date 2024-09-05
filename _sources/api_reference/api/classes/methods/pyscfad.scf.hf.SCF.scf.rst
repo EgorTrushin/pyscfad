@@ -1,6 +1,6 @@
-pyscfad.scf.hf.damping
+pyscfad.scf.hf.SCF.scf
 ======================
 
 .. currentmodule:: pyscfad.scf.hf
 
-.. autofunction:: damping
+.. automethod:: SCF.scf

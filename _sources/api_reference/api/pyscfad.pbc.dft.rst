@@ -39,16 +39,16 @@ pyscfad.pbc.dft
    :recursive:
 
    
-   pyscfad.pbc.dft.gen_grid
+   gen_grid
    
    
-   pyscfad.pbc.dft.krks
+   krks
    
    
-   pyscfad.pbc.dft.numint
+   numint
    
    
-   pyscfad.pbc.dft.rks
+   rks
    
    
 

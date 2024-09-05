@@ -29,7 +29,6 @@ pyscfad.scf.rohf
 
    
       get_fock
-      get_grad
       get_occ
       get_roothaan_fock
       make_rdm1

@@ -29,13 +29,13 @@ pyscfad.dft
    :recursive:
 
    
-   pyscfad.dft.libxc
+   libxc
    
    
-   pyscfad.dft.numint
+   numint
    
    
-   pyscfad.dft.rks
+   rks
    
    
 

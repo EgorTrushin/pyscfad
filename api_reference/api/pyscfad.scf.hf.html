@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pyscfad.scf.hf &#8212; pyscfad 0.1.6 documentation</title>
+    <title>pyscfad.scf.hf &#8212; pyscfad 0.1.7 documentation</title>
   
   
   
@@ -31,21 +31,21 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=8f8a7fc7"></script>
+    <script src="../../_static/documentation_options.js?v=3476fdda"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api_reference/api/pyscfad.scf.hf';</script>
     <script src="../../_static/custom-icon.js?v=40bda21d"></script>
@@ -53,10 +53,10 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="pyscfad.scf.hf.RHF" href="classes/pyscfad.scf.hf.RHF.html" />
-    <link rel="prev" title="pyscfad.scf.diis.SCF_DIIS" href="classes/pyscfad.scf.diis.SCF_DIIS.html" />
+    <link rel="prev" title="pyscfad.scf.diis.get_err_vec_orth" href="functions/pyscfad.scf.diis.get_err_vec_orth.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Jul 18, 2024"/>
+    <meta name="docbuild:last-update" content="Sep 05, 2024"/>
   </head>
   
   
@@ -476,7 +476,6 @@ document.write(`
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../df.html">Density fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="pyscfad.df.html">pyscfad.df</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="functions/pyscfad.df.density_fit.html">pyscfad.df.density_fit</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="pyscfad.df.addons.html">pyscfad.df.addons</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="classes/pyscfad.df.addons.load.html">pyscfad.df.addons.load</a></li>
 <li class="toctree-l4"><a class="reference internal" href="functions/pyscfad.df.addons.make_auxmol.html">pyscfad.df.addons.make_auxmol</a></li>
@@ -682,21 +681,20 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="classes/pyscfad.scf.diis.DIIS.html">pyscfad.scf.diis.DIIS</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classes/pyscfad.scf.diis.SCFDIIS.html">pyscfad.scf.diis.SCFDIIS</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classes/pyscfad.scf.diis.SCF_DIIS.html">pyscfad.scf.diis.SCF_DIIS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="functions/pyscfad.scf.diis.get_err_vec.html">pyscfad.scf.diis.get_err_vec</a></li>
+<li class="toctree-l4"><a class="reference internal" href="functions/pyscfad.scf.diis.get_err_vec_orig.html">pyscfad.scf.diis.get_err_vec_orig</a></li>
+<li class="toctree-l4"><a class="reference internal" href="functions/pyscfad.scf.diis.get_err_vec_orth.html">pyscfad.scf.diis.get_err_vec_orth</a></li>
 </ul>
 </details></li>
 <li class="toctree-l3 current active has-children"><a class="current reference internal" href="#">pyscfad.scf.hf</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="classes/pyscfad.scf.hf.RHF.html">pyscfad.scf.hf.RHF</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classes/pyscfad.scf.hf.SCF.html">pyscfad.scf.hf.SCF</a></li>
-<li class="toctree-l4"><a class="reference internal" href="functions/pyscfad.scf.hf.damping.html">pyscfad.scf.hf.damping</a></li>
 <li class="toctree-l4"><a class="reference internal" href="functions/pyscfad.scf.hf.dot_eri_dm.html">pyscfad.scf.hf.dot_eri_dm</a></li>
-<li class="toctree-l4"><a class="reference internal" href="functions/pyscfad.scf.hf.get_fock.html">pyscfad.scf.hf.get_fock</a></li>
-<li class="toctree-l4"><a class="reference internal" href="functions/pyscfad.scf.hf.kernel.html">pyscfad.scf.hf.kernel</a></li>
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="pyscfad.scf.rohf.html">pyscfad.scf.rohf</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="classes/pyscfad.scf.rohf.ROHF.html">pyscfad.scf.rohf.ROHF</a></li>
 <li class="toctree-l4"><a class="reference internal" href="functions/pyscfad.scf.rohf.get_fock.html">pyscfad.scf.rohf.get_fock</a></li>
-<li class="toctree-l4"><a class="reference internal" href="functions/pyscfad.scf.rohf.get_grad.html">pyscfad.scf.rohf.get_grad</a></li>
 <li class="toctree-l4"><a class="reference internal" href="functions/pyscfad.scf.rohf.get_occ.html">pyscfad.scf.rohf.get_occ</a></li>
 <li class="toctree-l4"><a class="reference internal" href="functions/pyscfad.scf.rohf.get_roothaan_fock.html">pyscfad.scf.rohf.get_roothaan_fock</a></li>
 <li class="toctree-l4"><a class="reference internal" href="functions/pyscfad.scf.rohf.make_rdm1.html">pyscfad.scf.rohf.make_rdm1</a></li>
@@ -749,7 +747,12 @@ document.write(`
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../util.html">Utility functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="pyscfad.util.pytree_node.html">pyscfad.util.pytree_node</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="pyscfad.util.html">pyscfad.util</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="functions/pyscfad.util.is_tracer.html">pyscfad.util.is_tracer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="functions/pyscfad.util.pytree_node.html">pyscfad.util.pytree_node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="functions/pyscfad.util.to_pyscf.html">pyscfad.util.to_pyscf</a></li>
+</ul>
+</details></li>
 </ul>
 </details></li>
 </ul>
@@ -822,10 +825,10 @@ document.write(`
 <p class="rubric">Classes</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="classes/pyscfad.scf.hf.RHF.html#pyscfad.scf.hf.RHF" title="pyscfad.scf.hf.RHF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RHF</span></code></a>(mol, **kwargs)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="classes/pyscfad.scf.hf.RHF.html#pyscfad.scf.hf.RHF" title="pyscfad.scf.hf.RHF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RHF</span></code></a>(mol)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="classes/pyscfad.scf.hf.SCF.html#pyscfad.scf.hf.SCF" title="pyscfad.scf.hf.SCF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SCF</span></code></a>(mol, **kwargs)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="classes/pyscfad.scf.hf.SCF.html#pyscfad.scf.hf.SCF" title="pyscfad.scf.hf.SCF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SCF</span></code></a>(mol)</p></td>
 <td><p>Subclass of <code class="xref py py-class docutils literal notranslate"><span class="pre">pyscf.scf.hf.SCF</span></code> with traceable attributes.</p></td>
 </tr>
 </tbody>
@@ -834,16 +837,7 @@ document.write(`
 <p class="rubric">Functions</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="functions/pyscfad.scf.hf.damping.html#pyscfad.scf.hf.damping" title="pyscfad.scf.hf.damping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">damping</span></code></a>(s, d, f, factor)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="functions/pyscfad.scf.hf.dot_eri_dm.html#pyscfad.scf.hf.dot_eri_dm" title="pyscfad.scf.hf.dot_eri_dm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dot_eri_dm</span></code></a>(eri, dm[, hermi, with_j, with_k])</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="functions/pyscfad.scf.hf.get_fock.html#pyscfad.scf.hf.get_fock" title="pyscfad.scf.hf.get_fock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_fock</span></code></a>(mf[, h1e, s1e, vhf, dm, cycle, ...])</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="functions/pyscfad.scf.hf.kernel.html#pyscfad.scf.hf.kernel" title="pyscfad.scf.hf.kernel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kernel</span></code></a>(mf[, conv_tol, conv_tol_grad, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="functions/pyscfad.scf.hf.dot_eri_dm.html#pyscfad.scf.hf.dot_eri_dm" title="pyscfad.scf.hf.dot_eri_dm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dot_eri_dm</span></code></a>(eri, dm[, hermi, with_j, with_k])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -862,12 +856,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="classes/pyscfad.scf.diis.SCF_DIIS.html"
+       href="functions/pyscfad.scf.diis.get_err_vec_orth.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">pyscfad.scf.diis.SCF_DIIS</p>
+        <p class="prev-next-title">pyscfad.scf.diis.get_err_vec_orth</p>
       </div>
     </a>
     <a class="right-next"
@@ -953,7 +947,7 @@ document.write(`
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
     <br/>
   </p>
 </div>

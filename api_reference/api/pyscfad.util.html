@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pyscfad.util.pytree_node &#8212; pyscfad 0.1.6 documentation</title>
+    <title>pyscfad.util &#8212; pyscfad 0.1.7 documentation</title>
   
   
   
@@ -31,30 +31,30 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=8f8a7fc7"></script>
+    <script src="../../_static/documentation_options.js?v=3476fdda"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api_reference/api/pyscfad.util.pytree_node';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api_reference/api/pyscfad.util';</script>
     <script src="../../_static/custom-icon.js?v=40bda21d"></script>
     <link rel="icon" href="../../_static/pyscfad_logo.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Development" href="../../development/index.html" />
+    <link rel="next" title="pyscfad.util.is_tracer" href="functions/pyscfad.util.is_tracer.html" />
     <link rel="prev" title="Utility functions" href="../util.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Jul 18, 2024"/>
+    <meta name="docbuild:last-update" content="Sep 05, 2024"/>
   </head>
   
   
@@ -474,7 +474,6 @@ document.write(`
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../df.html">Density fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="pyscfad.df.html">pyscfad.df</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="functions/pyscfad.df.density_fit.html">pyscfad.df.density_fit</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="pyscfad.df.addons.html">pyscfad.df.addons</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="classes/pyscfad.df.addons.load.html">pyscfad.df.addons.load</a></li>
 <li class="toctree-l4"><a class="reference internal" href="functions/pyscfad.df.addons.make_auxmol.html">pyscfad.df.addons.make_auxmol</a></li>
@@ -680,21 +679,20 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="classes/pyscfad.scf.diis.DIIS.html">pyscfad.scf.diis.DIIS</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classes/pyscfad.scf.diis.SCFDIIS.html">pyscfad.scf.diis.SCFDIIS</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classes/pyscfad.scf.diis.SCF_DIIS.html">pyscfad.scf.diis.SCF_DIIS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="functions/pyscfad.scf.diis.get_err_vec.html">pyscfad.scf.diis.get_err_vec</a></li>
+<li class="toctree-l4"><a class="reference internal" href="functions/pyscfad.scf.diis.get_err_vec_orig.html">pyscfad.scf.diis.get_err_vec_orig</a></li>
+<li class="toctree-l4"><a class="reference internal" href="functions/pyscfad.scf.diis.get_err_vec_orth.html">pyscfad.scf.diis.get_err_vec_orth</a></li>
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="pyscfad.scf.hf.html">pyscfad.scf.hf</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="classes/pyscfad.scf.hf.RHF.html">pyscfad.scf.hf.RHF</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classes/pyscfad.scf.hf.SCF.html">pyscfad.scf.hf.SCF</a></li>
-<li class="toctree-l4"><a class="reference internal" href="functions/pyscfad.scf.hf.damping.html">pyscfad.scf.hf.damping</a></li>
 <li class="toctree-l4"><a class="reference internal" href="functions/pyscfad.scf.hf.dot_eri_dm.html">pyscfad.scf.hf.dot_eri_dm</a></li>
-<li class="toctree-l4"><a class="reference internal" href="functions/pyscfad.scf.hf.get_fock.html">pyscfad.scf.hf.get_fock</a></li>
-<li class="toctree-l4"><a class="reference internal" href="functions/pyscfad.scf.hf.kernel.html">pyscfad.scf.hf.kernel</a></li>
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="pyscfad.scf.rohf.html">pyscfad.scf.rohf</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="classes/pyscfad.scf.rohf.ROHF.html">pyscfad.scf.rohf.ROHF</a></li>
 <li class="toctree-l4"><a class="reference internal" href="functions/pyscfad.scf.rohf.get_fock.html">pyscfad.scf.rohf.get_fock</a></li>
-<li class="toctree-l4"><a class="reference internal" href="functions/pyscfad.scf.rohf.get_grad.html">pyscfad.scf.rohf.get_grad</a></li>
 <li class="toctree-l4"><a class="reference internal" href="functions/pyscfad.scf.rohf.get_occ.html">pyscfad.scf.rohf.get_occ</a></li>
 <li class="toctree-l4"><a class="reference internal" href="functions/pyscfad.scf.rohf.get_roothaan_fock.html">pyscfad.scf.rohf.get_roothaan_fock</a></li>
 <li class="toctree-l4"><a class="reference internal" href="functions/pyscfad.scf.rohf.make_rdm1.html">pyscfad.scf.rohf.make_rdm1</a></li>
@@ -747,7 +745,12 @@ document.write(`
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../util.html">Utility functions</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">pyscfad.util.pytree_node</a></li>
+<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">pyscfad.util</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="functions/pyscfad.util.is_tracer.html">pyscfad.util.is_tracer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="functions/pyscfad.util.pytree_node.html">pyscfad.util.pytree_node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="functions/pyscfad.util.to_pyscf.html">pyscfad.util.to_pyscf</a></li>
+</ul>
+</details></li>
 </ul>
 </details></li>
 </ul>
@@ -793,7 +796,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="../util.html" class="nav-link">Utility functions</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">pyscfad.util...</li>
+    <li class="breadcrumb-item active" aria-current="page">pyscfad.util</li>
   </ul>
 </nav>
 </div>
@@ -810,34 +813,24 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="pyscfad-util-pytree-node">
-<h1>pyscfad.util.pytree_node<a class="headerlink" href="#pyscfad-util-pytree-node" title="Link to this heading">#</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="pyscfad.util.pytree_node">
-<span class="sig-prename descclassname"><span class="pre">pyscfad.util.</span></span><span class="sig-name descname"><span class="pre">pytree_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">leaf_names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/fishjojo/pyscfad/blob/doc/pyscfad/util.py#L4-L27"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyscfad.util.pytree_node" title="Link to this definition">#</a></dt>
-<dd><p>Class decorator that registers the underlying class as a pytree node.</p>
-<p>See <a class="reference external" href="https://jax.readthedocs.io/en/latest/pytrees.html">jax document</a>
-for the definition of pytrees.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>leaf_names</strong><span class="classifier">list or tuple</span></dt><dd><p>Attributes of the class that are traced as pytree leaves.</p>
-</dd>
-<dt><strong>num_args</strong><span class="classifier">int, optional</span></dt><dd><p>Number of positional arguments in <code class="docutils literal notranslate"><span class="pre">leaf_names</span></code>.
-This is useful when the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method of the class
-has positional arguments that are named differently than
-the actual attribute names. Default value is 0.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method of the class can’t have positional arguments
-that are not included in <code class="docutils literal notranslate"><span class="pre">leaf_names</span></code>. If <code class="docutils literal notranslate"><span class="pre">num_args</span></code> is greater
-than 0, the sequence of positional arguments in <code class="docutils literal notranslate"><span class="pre">leaf_names</span></code> must
-follow that in the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method.</p>
-</dd></dl>
-
+  <section id="module-pyscfad.util">
+<span id="pyscfad-util"></span><h1>pyscfad.util<a class="headerlink" href="#module-pyscfad.util" title="Link to this heading">#</a></h1>
+<p>Utility functions</p>
+<p class="rubric">Functions</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="functions/pyscfad.util.is_tracer.html#pyscfad.util.is_tracer" title="pyscfad.util.is_tracer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_tracer</span></code></a>(a)</p></td>
+<td><p>Test if the object is a tracer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="functions/pyscfad.util.pytree_node.html#pyscfad.util.pytree_node" title="pyscfad.util.pytree_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pytree_node</span></code></a>(leaf_names[, num_args, ...])</p></td>
+<td><p>Class decorator that registers the underlying class as a pytree.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="functions/pyscfad.util.to_pyscf.html#pyscfad.util.to_pyscf" title="pyscfad.util.to_pyscf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_pyscf</span></code></a>(obj[, nocopy_names, out])</p></td>
+<td><p>Convert the pyscfad object to its pyscf counterpart.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 
 
@@ -860,11 +853,11 @@ follow that in the <code class="docutils literal notranslate"><span class="pre">
       </div>
     </a>
     <a class="right-next"
-       href="../../development/index.html"
+       href="functions/pyscfad.util.is_tracer.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Development</p>
+        <p class="prev-next-title">pyscfad.util.is_tracer</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -879,22 +872,10 @@ follow that in the <code class="docutils literal notranslate"><span class="pre">
 
 
   <div class="sidebar-secondary-item">
-<div
-    id="pst-page-navigation-heading-2"
-    class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> On this page
-  </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pyscfad.util.pytree_node"><code class="docutils literal notranslate"><span class="pre">pytree_node()</span></code></a></li>
-</ul>
-  </nav></div>
-
-  <div class="sidebar-secondary-item">
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/fishjojo/pyscfad/edit/doc/doc/source/api_reference/api/pyscfad.util.pytree_node.rst">
+    <a href="https://github.com/fishjojo/pyscfad/edit/doc/doc/source/api_reference/api/pyscfad.util.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -909,7 +890,7 @@ follow that in the <code class="docutils literal notranslate"><span class="pre">
   <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../../_sources/api_reference/api/pyscfad.util.pytree_node.rst">
+    <a href="../../_sources/api_reference/api/pyscfad.util.rst">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>
@@ -954,7 +935,7 @@ follow that in the <code class="docutils literal notranslate"><span class="pre">
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
     <br/>
   </p>
 </div>

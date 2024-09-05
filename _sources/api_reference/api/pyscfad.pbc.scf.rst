@@ -39,10 +39,10 @@ pyscfad.pbc.scf
    :recursive:
 
    
-   pyscfad.pbc.scf.hf
+   hf
    
    
-   pyscfad.pbc.scf.khf
+   khf
    
    
 

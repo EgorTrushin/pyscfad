@@ -38,30 +38,30 @@ pyscfad.cc
    :recursive:
 
    
-   pyscfad.cc.ccsd
+   ccsd
    
    
-   pyscfad.cc.ccsd_rdm
+   ccsd_rdm
    
    
-   pyscfad.cc.ccsd_t
+   ccsd_t
    
    
-   pyscfad.cc.ccsd_t_slow
+   ccsd_t_slow
    
    
-   pyscfad.cc.dfccsd
+   dfccsd
    
    
-   pyscfad.cc.dfdcsd
+   dfdcsd
    
    
-   pyscfad.cc.gccsd_t
+   gccsd_t
    
    
-   pyscfad.cc.rccsd
+   rccsd
    
    
-   pyscfad.cc.rintermediates
+   rintermediates
    
 
