@@ -58,7 +58,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1.8" />
-    <meta name="docbuild:last-update" content="Jan 16, 2025"/>
+    <meta name="docbuild:last-update" content="Feb 14, 2025"/>
   </head>
   
   
@@ -485,7 +485,9 @@
 <li class="toctree-l4"><a class="reference internal" href="../pyscfad.dft.numint.NumInt.html">pyscfad.dft.numint.NumInt</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.numint.eval_mat.html">pyscfad.dft.numint.eval_mat</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.numint.eval_rho.html">pyscfad.dft.numint.eval_rho</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.numint.nr_nlc_vxc.html">pyscfad.dft.numint.nr_nlc_vxc</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.numint.nr_rks.html">pyscfad.dft.numint.nr_rks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.numint.nr_uks.html">pyscfad.dft.numint.nr_uks</a></li>
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../pyscfad.dft.rks.html">pyscfad.dft.rks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -495,6 +497,12 @@
 <li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.rks.energy_elec.html">pyscfad.dft.rks.energy_elec</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.rks.get_veff.html">pyscfad.dft.rks.get_veff</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.rks.prune_small_rho_grids_.html">pyscfad.dft.rks.prune_small_rho_grids_</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../pyscfad.dft.uks.html">pyscfad.dft.uks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pyscfad.dft.uks.UKS.html">pyscfad.dft.uks.UKS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.uks.energy_elec.html">pyscfad.dft.uks.energy_elec</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.uks.get_veff.html">pyscfad.dft.uks.get_veff</a></li>
 </ul>
 </details></li>
 </ul>
@@ -806,7 +814,7 @@
 <h1>pyscfad.gto.mole.Mole.intor<a class="headerlink" href="#pyscfad-gto-mole-mole-intor" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="pyscfad.gto.mole.Mole.intor">
-<span class="sig-prename descclassname"><span class="pre">Mole.</span></span><span class="sig-name descname"><span class="pre">intor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hermi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aosym</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'s1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shls_slice</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/fishjojo/pyscfad/blob/doc/pyscfad/../../../../../../opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/pyscf/gto/mole.py#L3415-L3477"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyscfad.gto.mole.Mole.intor" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">Mole.</span></span><span class="sig-name descname"><span class="pre">intor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hermi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aosym</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'s1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shls_slice</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/fishjojo/pyscfad/blob/doc/pyscfad/../../../../../../opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/pyscf/gto/mole.py#L3422-L3489"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyscfad.gto.mole.Mole.intor" title="Link to this definition">#</a></dt>
 <dd><p>Integral generator.</p>
 <dl>
 <dt>Args:</dt><dd><dl class="simple">
@@ -824,6 +832,11 @@ complete list of available 1-electron integral names</p>
 <div class="line">1 : hermitian</div>
 <div class="line">2 : anti-hermitian</div>
 </div>
+</dd>
+<dt>shls_slice<span class="classifier">4-element, 6-element or 8-element tuple</span></dt><dd><p>Label the start-stop shells for each index in the integral.
+For example, the 8-element tuple for the 2-electron integral
+tensor (ij|kl) = intor(‘int2e’) are specified as
+(ish_start, ish_end, jsh_start, jsh_end, ksh_start, ksh_end, lsh_start, lsh_end)</p>
 </dd>
 <dt>grids<span class="classifier">ndarray</span></dt><dd><p>Coordinates of grids for the int1e_grids integrals</p>
 </dd>

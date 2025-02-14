@@ -58,7 +58,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1.8" />
-    <meta name="docbuild:last-update" content="Jan 16, 2025"/>
+    <meta name="docbuild:last-update" content="Feb 14, 2025"/>
   </head>
   
   
@@ -485,7 +485,9 @@
 <li class="toctree-l4"><a class="reference internal" href="../pyscfad.dft.numint.NumInt.html">pyscfad.dft.numint.NumInt</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.numint.eval_mat.html">pyscfad.dft.numint.eval_mat</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.numint.eval_rho.html">pyscfad.dft.numint.eval_rho</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.numint.nr_nlc_vxc.html">pyscfad.dft.numint.nr_nlc_vxc</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.numint.nr_rks.html">pyscfad.dft.numint.nr_rks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.numint.nr_uks.html">pyscfad.dft.numint.nr_uks</a></li>
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../pyscfad.dft.rks.html">pyscfad.dft.rks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -495,6 +497,12 @@
 <li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.rks.energy_elec.html">pyscfad.dft.rks.energy_elec</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.rks.get_veff.html">pyscfad.dft.rks.get_veff</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.rks.prune_small_rho_grids_.html">pyscfad.dft.rks.prune_small_rho_grids_</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../pyscfad.dft.uks.html">pyscfad.dft.uks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pyscfad.dft.uks.UKS.html">pyscfad.dft.uks.UKS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.uks.energy_elec.html">pyscfad.dft.uks.energy_elec</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.uks.get_veff.html">pyscfad.dft.uks.get_veff</a></li>
 </ul>
 </details></li>
 </ul>
@@ -807,7 +815,18 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="pyscfad.scf.rohf.ROHF.dump_chk">
 <span class="sig-prename descclassname"><span class="pre">ROHF.</span></span><span class="sig-name descname"><span class="pre">dump_chk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">envs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/fishjojo/pyscfad/blob/doc/pyscfad/scf/rohf.py#L226-L234"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyscfad.scf.rohf.ROHF.dump_chk" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Serialize the SCF object and save it to the specified chkfile.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><dl class="simple">
+<dt>envs_or_file:</dt><dd><p>If this argument is a file path, the serialized SCF object is
+saved to the file specified by this argument.
+If this attribute is a dict (created by locals()), the necessary
+variables are saved to the file specified by the attribute mf.chkfile.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 

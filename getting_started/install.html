@@ -58,7 +58,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1.8" />
-    <meta name="docbuild:last-update" content="Jan 16, 2025"/>
+    <meta name="docbuild:last-update" content="Feb 14, 2025"/>
   </head>
   
   
@@ -497,10 +497,10 @@ export PYTHONPATH=$HOME/pyscfad/pyscfadlib:$PYTHONPATH
 <td><p>&gt;=2.7</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://jax.readthedocs.io/en/latest/">jax</a></p></td>
-<td><p>&gt;=0.4.14</p></td>
+<td><p>&gt;=0.4.14,&lt;=0.4.35</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://pypi.org/project/jaxlib/">jaxlib</a></p></td>
-<td><p>&gt;=0.4.14</p></td>
+<td><p>&gt;=0.4.14,&lt;=0.4.35</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://pyscf.org/">pyscf</a></p></td>
 <td><p>&gt;=2.3.0</p></td>
@@ -510,6 +510,13 @@ export PYTHONPATH=$HOME/pyscfad/pyscfadlib:$PYTHONPATH
 </tr>
 </tbody>
 </table>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since jax version 0.4.36, the tracing machinery has been modified
+to eliminate data-dependent tracing, which conflicts with pyscfad’s flexibility.
+A comprehensive update to ensure compatibility with later jax versions may be
+introduced in the future pyscfad 0.2 release.</p>
 </div>
 </section>
 </section>

@@ -47,12 +47,17 @@ pyscfad.dft.numint.NumInt
          
          
          
+           ~NumInt.nr_nlc_vxc
+         
+         
            ~NumInt.nr_rks
          
          
          
          
          
+         
+           ~NumInt.nr_uks
          
          
          

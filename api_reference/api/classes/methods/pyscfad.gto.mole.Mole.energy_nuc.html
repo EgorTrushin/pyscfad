@@ -58,7 +58,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1.8" />
-    <meta name="docbuild:last-update" content="Jan 16, 2025"/>
+    <meta name="docbuild:last-update" content="Feb 14, 2025"/>
   </head>
   
   
@@ -485,7 +485,9 @@
 <li class="toctree-l4"><a class="reference internal" href="../pyscfad.dft.numint.NumInt.html">pyscfad.dft.numint.NumInt</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.numint.eval_mat.html">pyscfad.dft.numint.eval_mat</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.numint.eval_rho.html">pyscfad.dft.numint.eval_rho</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.numint.nr_nlc_vxc.html">pyscfad.dft.numint.nr_nlc_vxc</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.numint.nr_rks.html">pyscfad.dft.numint.nr_rks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.numint.nr_uks.html">pyscfad.dft.numint.nr_uks</a></li>
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../pyscfad.dft.rks.html">pyscfad.dft.rks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -495,6 +497,12 @@
 <li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.rks.energy_elec.html">pyscfad.dft.rks.energy_elec</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.rks.get_veff.html">pyscfad.dft.rks.get_veff</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.rks.prune_small_rho_grids_.html">pyscfad.dft.rks.prune_small_rho_grids_</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../pyscfad.dft.uks.html">pyscfad.dft.uks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pyscfad.dft.uks.UKS.html">pyscfad.dft.uks.UKS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.uks.energy_elec.html">pyscfad.dft.uks.energy_elec</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.dft.uks.get_veff.html">pyscfad.dft.uks.get_veff</a></li>
 </ul>
 </details></li>
 </ul>
@@ -806,7 +814,7 @@
 <h1>pyscfad.gto.mole.Mole.energy_nuc<a class="headerlink" href="#pyscfad-gto-mole-mole-energy-nuc" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="pyscfad.gto.mole.Mole.energy_nuc">
-<span class="sig-prename descclassname"><span class="pre">Mole.</span></span><span class="sig-name descname"><span class="pre">energy_nuc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">charges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coords</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/fishjojo/pyscfad/blob/doc/pyscfad/../../../../../../opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/pyscf/gto/mole.py#L1517-L1540"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyscfad.gto.mole.Mole.energy_nuc" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">Mole.</span></span><span class="sig-name descname"><span class="pre">energy_nuc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">charges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coords</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/fishjojo/pyscfad/blob/doc/pyscfad/../../../../../../opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/pyscf/gto/mole.py#L1526-L1549"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyscfad.gto.mole.Mole.energy_nuc" title="Link to this definition">#</a></dt>
 <dd><p>Compute nuclear repulsion energy (AU) or static Coulomb energy</p>
 <dl class="simple">
 <dt>Returns</dt><dd><p>float</p>
