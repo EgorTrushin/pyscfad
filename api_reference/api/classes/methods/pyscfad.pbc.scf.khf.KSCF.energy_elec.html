@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pyscfad.pbc.scf.khf.KSCF.energy_elec &#8212; pyscfad 0.1.10 documentation</title>
+    <title>pyscfad.pbc.scf.khf.KSCF.energy_elec &#8212; pyscfad 0.1.11 documentation</title>
   
   
   
@@ -42,12 +42,14 @@
   <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../../_static/documentation_options.js?v=3d055840"></script>
+    <script src="../../../../_static/documentation_options.js?v=86f9da5d"></script>
     <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api_reference/api/classes/methods/pyscfad.pbc.scf.khf.KSCF.energy_elec';</script>
     <script src="../../../../_static/custom-icon.js?v=40bda21d"></script>
     <link rel="icon" href="../../../../_static/pyscfad_logo.svg"/>
@@ -57,8 +59,8 @@
     <link rel="prev" title="pyscfad.pbc.scf.khf.KSCF.eig" href="pyscfad.pbc.scf.khf.KSCF.eig.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.1.10" />
-    <meta name="docbuild:last-update" content="Jul 19, 2025"/>
+  <meta name="docsearch:version" content="0.1.11" />
+    <meta name="docbuild:last-update" content="Aug 14, 2025"/>
   </head>
   
   
@@ -546,6 +548,7 @@
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../pyscfad.gto.mole.html">pyscfad.gto.mole</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../pyscfad.gto.mole.Mole.html">pyscfad.gto.mole.Mole</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.gto.mole.inter_distance.html">pyscfad.gto.mole.inter_distance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.gto.mole.nao_nr_range.html">pyscfad.gto.mole.nao_nr_range</a></li>
 </ul>
 </details></li>
@@ -672,7 +675,13 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../pyscfad.scf.hf.html">pyscfad.scf.hf</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="../pyscfad.scf.hf.RHF.html">pyscfad.scf.hf.RHF</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../pyscfad.scf.hf.SCF.html">pyscfad.scf.hf.SCF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.scf.hf.dip_moment.html">pyscfad.scf.hf.dip_moment</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.scf.hf.dot_eri_dm.html">pyscfad.scf.hf.dot_eri_dm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.scf.hf.energy_elec.html">pyscfad.scf.hf.energy_elec</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.scf.hf.get_fock.html">pyscfad.scf.hf.get_fock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.scf.hf.kernel.html">pyscfad.scf.hf.kernel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.scf.hf.level_shift.html">pyscfad.scf.hf.level_shift</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../functions/pyscfad.scf.hf.make_rdm1.html">pyscfad.scf.hf.make_rdm1</a></li>
 </ul>
 </details></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../pyscfad.scf.rohf.html">pyscfad.scf.rohf</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -817,14 +826,12 @@
 <h1>pyscfad.pbc.scf.khf.KSCF.energy_elec<a class="headerlink" href="#pyscfad-pbc-scf-khf-kscf-energy-elec" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="pyscfad.pbc.scf.khf.KSCF.energy_elec">
-<span class="sig-prename descclassname"><span class="pre">KSCF.</span></span><span class="sig-name descname"><span class="pre">energy_elec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dm_kpts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h1e_kpts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vhf_kpts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/fishjojo/pyscfad/blob/doc/pyscfad/pbc/scf/khf.py#L34-L52"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyscfad.pbc.scf.khf.KSCF.energy_elec" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">KSCF.</span></span><span class="sig-name descname"><span class="pre">energy_elec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dm_kpts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h1e_kpts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vhf_kpts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/fishjojo/pyscfad/blob/doc/pyscfad/pbc/scf/khf.py#L48-L66"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyscfad.pbc.scf.khf.KSCF.energy_elec" title="Link to this definition">#</a></dt>
 <dd><p>Electronic part of Hartree-Fock energy, for given core hamiltonian and
 HF potential</p>
-<p>… math:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">E</span> <span class="o">=</span> \<span class="n">sum_</span><span class="p">{</span><span class="n">ij</span><span class="p">}</span><span class="n">h_</span><span class="p">{</span><span class="n">ij</span><span class="p">}</span> \<span class="n">gamma_</span><span class="p">{</span><span class="n">ji</span><span class="p">}</span>
-  <span class="o">+</span> \<span class="n">frac</span><span class="p">{</span><span class="mi">1</span><span class="p">}{</span><span class="mi">2</span><span class="p">}</span>\<span class="n">sum_</span><span class="p">{</span><span class="n">ijkl</span><span class="p">}</span> \<span class="n">gamma_</span><span class="p">{</span><span class="n">ji</span><span class="p">}</span>\<span class="n">gamma_</span><span class="p">{</span><span class="n">lk</span><span class="p">}</span> \<span class="n">langle</span> <span class="n">ik</span><span class="o">||</span><span class="n">jl</span>\<span class="n">rangle</span>
-</pre></div>
-</div>
+<div class="math notranslate nohighlight">
+\[E = \sum_{ij}h_{ij} \gamma_{ji}
+  + \frac{1}{2}\sum_{ijkl} \gamma_{ji}\gamma_{lk} \langle ik||jl\rangle\]</div>
 <p>Note this function has side effects which cause mf.scf_summary updated.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>mf : an instance of SCF class</p>

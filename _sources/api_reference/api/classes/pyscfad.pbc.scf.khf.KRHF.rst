@@ -29,7 +29,6 @@ pyscfad.pbc.scf.khf.KRHF
          
          
          
-           ~KRHF.check_sanity
          
          
          
@@ -54,6 +53,7 @@ pyscfad.pbc.scf.khf.KRHF
          
          
            ~KRHF.get_init_guess
+         
          
          
          
