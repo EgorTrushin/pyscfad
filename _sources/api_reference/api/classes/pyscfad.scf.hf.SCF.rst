@@ -29,6 +29,7 @@ pyscfad.scf.hf.SCF
          
          
          
+         
            ~SCF.check_sanity
          
          
@@ -57,6 +58,8 @@ pyscfad.scf.hf.SCF
          
            ~SCF.energy_nuc
          
+         
+           ~SCF.energy_tot
          
          
          

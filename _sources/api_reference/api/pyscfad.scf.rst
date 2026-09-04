@@ -19,6 +19,7 @@ pyscfad.scf
       :toctree: functions/
 
    
+      GHF
       RHF
       ROHF
       UHF
@@ -43,6 +44,9 @@ pyscfad.scf
    addons
    
    
+   anderson
+   
+   
    chkfile
    
    
@@ -52,11 +56,22 @@ pyscfad.scf
    diis
    
    
+   diis_lite
+   
+   
+   ghf
+   
+   
    hf
+   
+   
+   hf_lite
    
    
    rohf
    
+   
+   sp2
    
    
    uhf

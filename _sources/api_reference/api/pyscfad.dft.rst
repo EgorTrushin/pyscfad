@@ -29,6 +29,9 @@ pyscfad.dft
    :recursive:
 
    
+   autoxc
+   
+   
    libxc
    
    
@@ -36,7 +39,6 @@ pyscfad.dft
    
    
    rks
-   
    
    
    uks
