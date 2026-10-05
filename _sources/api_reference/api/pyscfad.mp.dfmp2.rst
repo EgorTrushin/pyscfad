@@ -15,6 +15,7 @@ pyscfad.mp.dfmp2
       :toctree: classes/
 
    
+      DFRMP2
       MP2
 
    
